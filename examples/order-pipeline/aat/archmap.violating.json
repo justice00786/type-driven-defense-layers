@@ -1,0 +1,69 @@
+{
+  "mappingKind": "pedagogical-archmap-reading",
+  "note": "NOT archmap/v0.5.4. Educational mapping showing local-OK / global-NG gluing failure.",
+  "aatPin": "89396ac98c84ee332bcb8ae85ee863f13c84e042",
+  "selectedAtomCandidates": [
+    {
+      "id": "atom.OrderDomain",
+      "role": "domain-logic",
+      "owns": ["Order typestate", "Money/OrderId parse"]
+    },
+    {
+      "id": "atom.PaymentPort",
+      "role": "outbound-port",
+      "owns": ["payment request boundary"]
+    },
+    {
+      "id": "atom.Persistence",
+      "role": "adapter",
+      "owns": ["order storage", "SqlOrderRow internals"]
+    }
+  ],
+  "selectedContexts": [
+    { "id": "ctx.domain", "atoms": ["atom.OrderDomain"] },
+    { "id": "ctx.payment", "atoms": ["atom.PaymentPort"] },
+    { "id": "ctx.persistence", "atoms": ["atom.Persistence"] }
+  ],
+  "declaredDependencies": [
+    {
+      "from": "atom.OrderDomain",
+      "to": "atom.PaymentPort",
+      "kind": "uses-port"
+    },
+    {
+      "from": "atom.OrderDomain",
+      "to": "atom.Persistence",
+      "kind": "uses-port"
+    },
+    {
+      "from": "atom.OrderDomain",
+      "to": "atom.Persistence",
+      "kind": "imports-adapter-internals",
+      "detail": "OrderDomain reaches into SqlOrderRow column names — forbidden by law.dependency-direction."
+    }
+  ],
+  "localReadings": [
+    {
+      "context": "ctx.domain",
+      "status": "locally-ok",
+      "reason": "Draft/Placed/Paid typestate still typechecks in isolation."
+    },
+    {
+      "context": "ctx.payment",
+      "status": "locally-ok",
+      "reason": "PaymentPort contract unchanged."
+    },
+    {
+      "context": "ctx.persistence",
+      "status": "locally-ok",
+      "reason": "SqlOrderRow is a valid local persistence model."
+    }
+  ],
+  "compositionReading": {
+    "status": "globally-ng",
+    "reason": "Each context is locally fine, but Domain→Persistence internals violate the selected dependency law — a pedagogical stand-in for gluing / descent failure.",
+    "analyticObstructionMaterial": [
+      "imports-adapter-internals between atom.OrderDomain and atom.Persistence"
+    ]
+  }
+}
