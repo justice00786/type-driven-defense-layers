@@ -6,11 +6,12 @@
  *
  * To inspect failures locally:
  *   npx tsc --noEmit --strict src/escapes.ts
- * (expect errors on the incomplete switch; the `as` cast will still silence parse.)
+ * Expect: incompleteDescribe lacks a return for `Paid` (and may report
+ * non-exhaustive switch). The `as` casts still silence parse failures.
  */
 
 import { type OrderId, parseOrderId } from "./brands.js";
-import { type OrderView, assertNever } from "./orderTypestate.js";
+import { type OrderView } from "./orderTypestate.js";
 
 /** Escape hatch: force a raw string into OrderId without parsing. */
 export function forgeOrderId(raw: string): OrderId {
@@ -23,21 +24,16 @@ export function unsafeParseOrderId(raw: unknown): OrderId {
 }
 
 /**
- * Incomplete handling: if a new status is added to OrderView, this function
- * will not force a compile error here unless assertNever is used — and even
- * then, casting `view` to a narrower type defeats exhaustiveness.
+ * Incomplete switch: `Paid` is intentionally omitted.
+ * Under `strict` / `noImplicitReturns`, `tsc` rejects this file — that is the point.
+ * Contrast with `describeOrder` in `orderTypestate.ts`, which uses `assertNever`.
  */
-export function fragileDescribe(view: OrderView): string {
-  const narrowed = view as { status: "Draft" | "Placed" | "Paid" };
-  switch (narrowed.status) {
+export function incompleteDescribe(view: OrderView): string {
+  switch (view.status) {
     case "Draft":
       return "draft";
     case "Placed":
       return "placed";
-    case "Paid":
-      return "paid";
-    default:
-      // With a proper OrderView this is reachable only if the cast lies.
-      return assertNever(narrowed as never);
+    // case "Paid": omitted on purpose — exhaustiveness / return-path failure
   }
 }
