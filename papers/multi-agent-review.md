@@ -49,6 +49,7 @@
 | 第2次→第3次改訂 | §3.3・§5.3・参考文献 | AATを直接典拠（査読未刊行）としつつ、Goguen (1992)・Mac Lane & Moerdijk (1992) 等を関連系譜として追加し学術的地盤を補強。AAT固有構成と査読公開物の同一視はしない旨を明示 | AAT本体に査読論文はないが、サイト・層・降下の問題設定は査読付き系譜で裏付け可能であるため |
 | 第3次→第4次改訂 | §3.3・§4・新§5・文献節は旧§5→§6・`aat-bridge.md`・`examples/order-pipeline` | 注文事例デモ、データ流と構造診断の分離、AAT語彙の教育的写像（合法／違反）、ArchSig/FieldSig非実行と commit ピン。事例追加に伴い代表的文献は §6（AAT は §6.3）へ繰り下げ | 論文深化＋最小デモ＋AAT橋渡し（[#1](https://github.com/justice00786/type-driven-defense-layers/issues/1)）。MAD 全面再実行はせず、`aat-bridge.md` の事実性チェックリストで代替 |
 | 第4次→第4次補訂 | デモ（`escapes`・typestate 負例・境界スキーマ解釈）・要旨／結論・README／`READING.md`／参考文献 #6 | 不完全分岐・不正遷移の型エラー・スキーマ起点テストを強化。CI 記述と節番号・主張境界の文書整合を追補 | 計画反映レビューおよび横断整合レビューの残件対応（MAD 再実行なし） |
+| 第4次補訂→bridge §3追記 | `aat-bridge.md` 新§3・本文§2リンク・README／`READING.md`・チェックリスト | 第3層の「モノイド・関手・モナド」近似とその限界を bridge 正本に文書化。旧§3–§6を繰り下げ | [#3](https://github.com/justice00786/type-driven-defense-layers/issues/3)。MAD 全面再実行なし（チェックリストで代替） |
 
 ## 4. AATに関するRed Teamの偽陰性
 

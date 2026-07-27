@@ -36,7 +36,9 @@ In `archmap.violating.json`:
    ArchSig measurement packet.
 
 This is the Layer 3 point the TypeScript typestate demo cannot show alone:
-local correctness does not imply global lawfulness.
+local correctness does not imply global lawfulness. For why monoid / functor /
+monad composition alone is only an approximation of AAT's geometric vocabulary,
+see [`papers/aat-bridge.md`](../../../papers/aat-bridge.md) §3.
 
 ## Layer 4 limit note
 

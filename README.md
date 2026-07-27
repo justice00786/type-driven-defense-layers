@@ -37,7 +37,7 @@ CI は `examples/order-pipeline` で `npm run typecheck` と `npm test` を実�
 ```
 papers/
   type-driven-defense-layers.md   4層構造の本文
-  aat-bridge.md                   AAT語彙対応・主張等級・非主張
+  aat-bridge.md                   AAT語彙対応・主張等級・非主張・近似と限界
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
   order-pipeline/
