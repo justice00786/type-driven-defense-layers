@@ -9,6 +9,10 @@ import {
   toBoundaryDto,
   toView,
 } from "../src/orderTypestate.js";
+import {
+  loadOrderBoundarySchema,
+  matchesOrderBoundarySchema,
+} from "./boundarySchema.js";
 
 describe("Layer 2 parse", () => {
   it("rejects invalid order ids", () => {
@@ -69,35 +73,30 @@ describe("Layer 4 property-based tests", () => {
 });
 
 describe("Layer 4 boundary schema", () => {
-  const statusSet = new Set(["Draft", "Placed", "Paid"]);
+  const schema = loadOrderBoundarySchema();
 
-  function matchesBoundarySchema(value: unknown): boolean {
-    if (typeof value !== "object" || value === null) return false;
-    const v = value as Record<string, unknown>;
-    return (
-      typeof v.id === "string" &&
-      typeof v.amount === "number" &&
-      Number.isInteger(v.amount) &&
-      (v.amount as number) >= 0 &&
-      typeof v.status === "string" &&
-      statusSet.has(v.status)
-    );
-  }
-
-  it("toBoundaryDto matches the minimal boundary schema", () => {
+  it("toBoundaryDto matches schemas/order-boundary.schema.json", () => {
     const draft = createDraft({ id: "ord_boundary1", amount: 42 });
     expect(isParseError(draft)).toBe(false);
     if (isParseError(draft)) return;
     const dto = toBoundaryDto(toView(draft, "Draft"));
-    expect(matchesBoundarySchema(dto)).toBe(true);
+    expect(matchesOrderBoundarySchema(schema, dto)).toBe(true);
   });
 
-  it("rejects malformed boundary payloads", () => {
-    expect(matchesBoundarySchema({ id: "x", amount: -1, status: "Draft" })).toBe(
-      false,
-    );
-    expect(matchesBoundarySchema({ id: 1, amount: 0, status: "Paid" })).toBe(
-      false,
-    );
+  it("rejects malformed boundary payloads against the schema artifact", () => {
+    expect(
+      matchesOrderBoundarySchema(schema, {
+        id: "x",
+        amount: -1,
+        status: "Draft",
+      }),
+    ).toBe(false);
+    expect(
+      matchesOrderBoundarySchema(schema, {
+        id: 1,
+        amount: 0,
+        status: "Paid",
+      }),
+    ).toBe(false);
   });
 });
