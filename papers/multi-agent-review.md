@@ -17,7 +17,7 @@
 | Red Team（敵対的検証） | 引用文献・固有名詞の事実性を能動的に検証し、虚偽や不正確な記述を暴く | Perez et al. (2022) |
 | Judge / Moderator（統合） | 上記の指摘を評価し、根拠のある指摘のみを採用して過剰修正を防ぎながら統合する | Liang et al. (2023) の議論収束メカニズムに準拠 |
 
-この設計により、単に批判を並べるだけでなく、「議論の収束」と「過度の妥協の防止」を両立することを目指す。
+この設計により、単に批判を並べるだけでなく、「議論の収束」と「過度の妥協の防止」を両立することを目指す。加えて、Red Team の判断自体を再検証する「二次検証（第三者による一次情報提供）」が有効に機能した事例を §4 に記録する。
 
 ## 2. 初版に対する検証結果（本文への反映）
 
@@ -27,27 +27,37 @@
 
 ### 2.2 Red Teamによる事実性検証
 
-1. **AATという名称について**：Web検索により、「Algebraic Architecture Theory」という名称を持つ確立した学術分野・学派は確認できなかった。モノイド・関手・モナドによるソフトウェア構造の代数的記述という発想自体は Algebra-Driven Design や Applied Category Theory の文脈に実在するが、「AAT」という呼称そのものは本文初版が複数の系譜を統合するために用いた独自の造語と判断した。本文の階層マップおよび §3.3 に「本稿独自の統合的呼称」と注記した。
-2. **Goguenの引用について**：初版の「Goguen, J. (1992). *An Algebraic Approach to Software Architecture*」は実在の文献として確認できなかった。関連研究として *Parameterized Programming and Software Architecture*（ICSR 1996）に訂正した。
-3. **ACT関連の出典について**：出典不明であった「Bartholomew et al.」は、実在が確認できる Spivak & Vicary (ACT2020, arXiv:2101.12046) に置き換えた。
+1. **AATという名称について（後に撤回）**：Web検索により、「Algebraic Architecture Theory」という名称を持つ確立した学術分野・学派は確認できなかった。当時は「AAT」を本文独自の造語と判断し、本文に「本稿独自の統合的呼称」と注記した。この判断は §4 で訂正する。
+2. **Goguenの引用について**：初版の「Goguen, J. (1992). *An Algebraic Approach to Software Architecture*」は実在の文献として確認できなかった。関連研究として *Parameterized Programming and Software Architecture*（ICSR 1996）に訂正した。この点は現時点でも有効である。
+3. **ACT関連の出典について**：出典不明であった「Bartholomew et al.」は、実在が確認できる Spivak & Vicary (ACT2020, arXiv:2101.12046) に置き換えた。AAT の直接典拠が判明したのち、本文第3層の文献リストからは外し、経緯の記録としてここに残す。
 
-階層構造そのものについては、各層が実在する独立した学術的系譜（CHL対応、Typestate、Algebra-Driven Design、QuickCheck）に裏付けられており、骨格を覆すほどの欠陥は見つからなかったため維持した。
+階層構造そのものについては、各層が実在する独立した学術的系譜に裏付けられており、骨格を覆すほどの欠陥は見つからなかったため維持した。
 
 ### 2.3 Judge（統合）による判断
 
-根拠が明確な指摘（引用の誤り、用語の出自の不明確さ、各層の限界の欠落）のみを採用し、階層モデルの骨格や各層のメカニズムに関する記述は妥当と判断して維持した。批判を受けて正しい主張まで撤回する過剰修正は避ける。
+根拠が明確な指摘（引用の誤り、用語の出自の不明確さ、各層の限界の欠落）のみを採用し、階層モデルの骨格や各層のメカニズムに関する記述は妥当と判断して維持する方針は、その後の訂正後も継続する。
 
 ## 3. 改訂履歴
 
 | 版 | 変更箇所（本文） | 内容 | 理由 |
 |---|---|---|---|
-| 初版→本記録時点 | §2 階層マップ・§3.3・要旨 | AATを「本稿独自の統合的呼称」と明記 | Red Team検証で該当分野名を確認できなかったため |
-| 初版→本記録時点 | 参考文献・Goguen | 誤った題目→*Parameterized Programming and Software Architecture* (ICSR 1996) | 初版の題目が実在の文献と一致しなかったため |
-| 初版→本記録時点 | 参考文献・ACT関連 | 出典不明の「Bartholomew et al.」→Spivak & Vicary, ACT2020 | 実在確認できる文献への置き換え |
-| 初版→本記録時点 | §3 表 | 「各層の限界」列を追加 | Devil's Advocate指摘により各層の限界を明示するため |
+| 初版→第1次改訂 | §2 階層マップ・§3.3・要旨 | AATを「本稿独自の統合的呼称」と明記 | Red Team検証で該当分野名を確認できなかったため（※§4で訂正） |
+| 初版→第1次改訂 | 参考文献・Goguen | 誤った題目→*Parameterized Programming and Software Architecture* (ICSR 1996) | 初版の題目が実在の文献と一致しなかったため |
+| 初版→第1次改訂 | 参考文献・ACT関連 | 出典不明の「Bartholomew et al.」→Spivak & Vicary, ACT2020 | 実在確認できる文献への置き換え |
+| 初版→第1次改訂 | §3 表 | 「各層の限界」列を追加 | Devil's Advocate指摘により各層の限界を明示するため |
+| 第1次→第2次改訂 | §2・§3・§3.3・§5.3 | AATを「本稿独自の造語」から iroha1203 (2026) による実在の研究プロジェクトへ訂正。語彙を代数幾何的記述に合わせ、Spivak & Vicary を本文第3層文献から外す | 一次情報（GitHubリポジトリ）の提示により、Red Team判断が偽陰性であったと判明したため |
+
+## 4. AATに関するRed Teamの偽陰性
+
+第1次改訂時の Red Team は、「Algebraic Architecture Theory」という名称の学術分野を Web 検索で発見できなかったことをもって、これを「本稿独自の統合的造語」と断定した。しかしこの判断は誤りであった。ユーザーから直接提示されたリポジトリ URL（https://github.com/iroha1203/AlgebraicArchitectureTheoryV2 ）を確認したところ、AAT は iroha1203 氏による実在の研究プロジェクトであり、Lean 4 による形式化と、代数幾何的な理論体系（アーキテクチャ原子、サイト、層、法則代数、障害イデアル層、合法軌跡、アーキテクチャスキーム、Čech降下）を伴うことが確認できた。初版における「Obstruction（構造的衝突）の代数的検出」という記述は、実際の AAT が持つ obstruction ideal sheaf（障害イデアル層）とおおむね対応しており、単なる思いつきの造語ではなく、実在の理論を（簡略化した形で）反映していたことになる。
+
+この一件は、Red Team による「不在の確認」が本質的に持つ限界を示している。Web 検索で見つからないことは、対象が存在しないことの証明にはならない。特に、査読付き論文のように索引化された媒体を主に検索した場合、GitHub 上で公開されている独立研究プロジェクトのように索引化・言及が少ない一次情報は検出漏れを起こしやすい。Judge 役は「検証できなかった＝誤りである」と即断せず、追加の一次情報が提示された場合には判断を更新する姿勢を保つべきである。
+
+なお、この訂正は AAT という名称・概念そのものの実在性についてのものであり、「AAT が確立された査読付き学術分野であるか」という点については、原著リポジトリ自身が独立した進行中の研究であることを明記しているため、その区別（実在するが査読済み学術分野とは性質が異なる）は維持する。
 
 ## 参考文献
 
 1. Du, Y., Li, S., Torralba, A., Tenenbaum, J. B., & Mordatch, I. (2023). Improving Factuality and Reasoning in Language Models through Multiagent Debate. arXiv:2305.14325.
 2. Liang, T., He, Z., Jiao, W., Wang, X., Wang, Y., Wang, R., Yang, Y., Shi, S., & Tu, Z. (2024). Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate. *Proceedings of EMNLP 2024*, 17889–17904.
 3. Perez, E., Huang, S., Song, F., Cai, T., Ring, R., Aslanides, J., Glaese, A., McAleese, N., & Irving, G. (2022). Red Teaming Language Models with Language Models. *Proceedings of EMNLP 2022*.
+4. Spivak, D. I., & Vicary, J. (Eds.) (2020). Applied Category Theory 2020 (ACT2020). arXiv:2101.12046.（第1次改訂で「Bartholomew et al.」の代替として本文に入れ、第2次改訂で本文第3層文献からは外した経緯の参照用）
