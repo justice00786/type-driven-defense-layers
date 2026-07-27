@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/order-pipeline/order-boundary.schema.json",
+  "title": "OrderBoundaryDto",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "amount", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ord_[a-z0-9]{8,32}$"
+    },
+    "amount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Draft", "Placed", "Paid"]
+    }
+  }
+}
