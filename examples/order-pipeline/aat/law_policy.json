@@ -1,0 +1,31 @@
+{
+  "mappingKind": "pedagogical-law-policy-reading",
+  "note": "NOT law-policy/v0.5.4. Selected laws for the order-pipeline educational mapping only.",
+  "aatPin": "89396ac98c84ee332bcb8ae85ee863f13c84e042",
+  "selectedLaws": [
+    {
+      "id": "law.dependency-direction",
+      "statement": "Domain may depend on ports; Domain must not import adapter internals.",
+      "severity": "error"
+    },
+    {
+      "id": "law.boundary-dto-only",
+      "statement": "Cross-context payloads at PaymentPort / Persistence must be OrderBoundaryDto-shaped.",
+      "severity": "error"
+    }
+  ],
+  "evaluationAgainst": {
+    "lawful": "archmap.lawful.json",
+    "violating": "archmap.violating.json"
+  },
+  "expectedReadings": {
+    "lawful": {
+      "law.dependency-direction": "satisfied",
+      "law.boundary-dto-only": "satisfied"
+    },
+    "violating": {
+      "law.dependency-direction": "failed-on-composition",
+      "law.boundary-dto-only": "satisfied-locally"
+    }
+  }
+}

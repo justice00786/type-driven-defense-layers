@@ -1,0 +1,60 @@
+{
+  "mappingKind": "pedagogical-archmap-reading",
+  "note": "NOT archmap/v0.5.4. Educational mapping for the order-pipeline demo only.",
+  "aatPin": "89396ac98c84ee332bcb8ae85ee863f13c84e042",
+  "selectedAtomCandidates": [
+    {
+      "id": "atom.OrderDomain",
+      "role": "domain-logic",
+      "owns": ["Order typestate", "Money/OrderId parse"]
+    },
+    {
+      "id": "atom.PaymentPort",
+      "role": "outbound-port",
+      "owns": ["payment request boundary"]
+    },
+    {
+      "id": "atom.Persistence",
+      "role": "adapter",
+      "owns": ["order storage"]
+    }
+  ],
+  "selectedContexts": [
+    { "id": "ctx.domain", "atoms": ["atom.OrderDomain"] },
+    { "id": "ctx.payment", "atoms": ["atom.PaymentPort"] },
+    { "id": "ctx.persistence", "atoms": ["atom.Persistence"] }
+  ],
+  "declaredDependencies": [
+    {
+      "from": "atom.OrderDomain",
+      "to": "atom.PaymentPort",
+      "kind": "uses-port"
+    },
+    {
+      "from": "atom.OrderDomain",
+      "to": "atom.Persistence",
+      "kind": "uses-port"
+    }
+  ],
+  "localReadings": [
+    {
+      "context": "ctx.domain",
+      "status": "locally-ok",
+      "reason": "Typestate and branded parse confine invalid drafts inside OrderDomain."
+    },
+    {
+      "context": "ctx.payment",
+      "status": "locally-ok",
+      "reason": "PaymentPort only accepts boundary DTOs."
+    },
+    {
+      "context": "ctx.persistence",
+      "status": "locally-ok",
+      "reason": "Persistence only stores serialized OrderBoundaryDto."
+    }
+  ],
+  "compositionReading": {
+    "status": "globally-ok",
+    "reason": "Dependencies stay Domain -> Port/Adapter; no Domain import of Persistence internals."
+  }
+}
