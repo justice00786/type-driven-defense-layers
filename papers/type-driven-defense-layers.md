@@ -61,7 +61,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 ### 3.3 レイヤー3：マクロ構造層（AAT）
 
-第3層は、モジュールやアーキテクチャ全体を代数幾何的な対象として捉える。典拠は iroha1203 による Algebraic Architecture Theory（[AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2)）であり、アーキテクチャ原子、AATサイト、層（sheaf）、法則代数、障害イデアル層（obstruction ideal sheaf）、合法軌跡（lawful locus）、アーキテクチャスキーム、Čech降下といった語彙によって、結合における不変量の維持や構造的衝突を診断する。関連する広い文脈としては Algebra-Driven Design や古典的な代数的仕様の研究があるが、本稿の第3層の直接の典拠は上記 AAT プロジェクトである。
+第3層は、モジュールやアーキテクチャ全体を代数幾何的な対象として捉える。第3層の**直接典拠**は iroha1203 による Algebraic Architecture Theory（[AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2)）であり、アーキテクチャ原子、AATサイト、層（sheaf）、法則代数、障害イデアル層（obstruction ideal sheaf）、合法軌跡（lawful locus）、アーキテクチャスキーム、Čech降下といった語彙によって、結合における不変量の維持や構造的衝突を診断する。AAT 自体は査読付き学術誌への掲載物ではなく、Lean 形式化を伴う進行中の独立研究である。その一方、サイト・層・降下による局所–大域整合の定式化自体は、Goguen (1992) の層意味論や Mac Lane & Moerdijk (1992) に代表される層論、および古典的な代数的仕様の研究に遡る**確立した査読付き系譜**に位置づけられる。AAT 固有の構成（障害イデアル層、合法軌跡、SAGA比較定理など）は、その系譜の上に置かれた形式化研究であり、査読公開物と同一視しない。
 
 ### 3.4 レイヤー4：動的・意味検証層
 
@@ -105,8 +105,11 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 ### 5.3 レイヤー3：マクロ構造層（AAT）
 
 - **iroha1203 (2026).** *Algebraic Architecture Theory & Software Field Theory* (AlgebraicArchitectureTheoryV2) [ソフトウェア・研究リポジトリ]. GitHub. https://github.com/iroha1203/AlgebraicArchitectureTheoryV2 — 本稿の第3層「AAT」の直接の典拠。アーキテクチャ原子・AATサイト・層・法則代数・障害イデアル層・合法軌跡・アーキテクチャスキーム・Čech降下・導来法則幾何を用いてアーキテクチャを代数幾何的対象として扱う理論、およびソフトウェア進化を計算可能な対象として扱う関連理論 Software Field Theory（SFT）、両者を実務の成果物に接続するツール群 ArchSig / FieldSig からなる。Lean 4 上で構造的命題の形式証明を進めており、`axiom` / `sorry` 等の未証明の抜け道を使わない方針を明記している。査読付き学術誌への掲載物ではなく、公開中の独立研究プロジェクトである点には留意が必要。
-- Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.（代数的仕様に基づく設計というより広い文脈での関連文献として存置）
-- Goguen, J. (1996). *Parameterized Programming and Software Architecture*. Proceedings of ICSR 1996.（AATとは別系統の関連文献）
+- **関連系譜（査読付き／標準的学術書）**：AAT 本体を査読公開物とみなすものではなく、サイト・層・降下および代数的仕様という問題設定の学術的地盤を示す。
+  - Goguen, J. (1992). *Sheaf semantics for concurrent interacting objects*. *Mathematical Structures in Computer Science*, 2(2), 159–191. — オブジェクトと相互結合を層で扱う査読付き原典。局所整合が大域で失敗しうるという問題意識の先行研究。
+  - Mac Lane, S., & Moerdijk, I. (1992). *Sheaves in Geometry and Logic: A First Introduction to Topos Theory*. Springer. — AATサイト・層・Grothendieck位相の数学的基板。
+  - Goguen, J. (1996). *Parameterized Programming and Software Architecture*. Proceedings of ICSR 1996.（代数的仕様・アーキテクチャ合成の系譜）
+- Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.（代数的仕様に基づく設計というより広い文脈での関連文献。書籍／Leanpubであり査読論文ではない）
 
 ### 5.4 レイヤー4：動的・意味検証層
 
@@ -125,7 +128,9 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 4. Strom, R. E., & Yemini, S. (1986). Typestate: A programming language mechanism for enhancing software reliability. *IEEE Transactions on Software Engineering*, 12(1), 157–171.
 5. Brady, E. (2017). *Type-Driven Development with Idris*. Manning Publications.
 6. iroha1203 (2026). *Algebraic Architecture Theory & Software Field Theory* (AlgebraicArchitectureTheoryV2). GitHub. https://github.com/iroha1203/AlgebraicArchitectureTheoryV2
-7. Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.
-8. Goguen, J. (1996). Parameterized Programming and Software Architecture. *Proceedings of ICSR 1996*.
-9. Claessen, K., & Hughes, J. (2000). QuickCheck: A lightweight tool for random testing of Haskell programs. *Proceedings of ICFP 2000*.
-10. Moggi, E. (1991). Notions of computation and monads. *Information and Computation*, 93(1), 55–92.
+7. Goguen, J. (1992). Sheaf semantics for concurrent interacting objects. *Mathematical Structures in Computer Science*, 2(2), 159–191.
+8. Mac Lane, S., & Moerdijk, I. (1992). *Sheaves in Geometry and Logic: A First Introduction to Topos Theory*. Springer.
+9. Goguen, J. (1996). Parameterized Programming and Software Architecture. *Proceedings of ICSR 1996*.
+10. Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.
+11. Claessen, K., & Hughes, J. (2000). QuickCheck: A lightweight tool for random testing of Haskell programs. *Proceedings of ICFP 2000*.
+12. Moggi, E. (1991). Notions of computation and monads. *Information and Computation*, 93(1), 55–92.

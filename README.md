@@ -33,6 +33,8 @@ papers/
 - Strom, R. E., & Yemini, S. (1986). *Typestate: A programming language mechanism for enhancing software reliability*.
 - Brady, E. (2017). *Type-Driven Development with Idris*.
 - iroha1203 (2026). *Algebraic Architecture Theory & Software Field Theory*. GitHub.
+- Goguen, J. (1992). *Sheaf semantics for concurrent interacting objects*. MSCS.（AAT関連系譜）
+- Mac Lane, S., & Moerdijk, I. (1992). *Sheaves in Geometry and Logic*.（AAT関連系譜）
 - Claessen, K., & Hughes, J. (2000). *QuickCheck*. ICFP.
 - Du, Y., et al. (2023). *Improving Factuality and Reasoning in Language Models through Multiagent Debate*.
 - Perez, E., et al. (2022). *Red Teaming Language Models with Language Models*. EMNLP.
