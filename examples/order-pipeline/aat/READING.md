@@ -14,6 +14,9 @@ as ArchSig `archmap/v0.5.4` or `law-policy/v0.5.4` inputs. See `AAT_PIN.md`.
 
 ## Direct mapping (artifact level)
 
+Fixture-local summary only. The graded mapping tables and non-claims
+canonical source is [`papers/aat-bridge.md`](../../../papers/aat-bridge.md).
+
 | Demo concept | Mapping field |
 | --- | --- |
 | `OrderDomain` / `PaymentPort` / `Persistence` | `selectedAtomCandidates` |

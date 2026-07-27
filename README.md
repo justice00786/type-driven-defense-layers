@@ -18,6 +18,7 @@
 ```bash
 cd examples/order-pipeline
 npm ci
+npm run typecheck
 npm test
 ```
 
@@ -25,7 +26,7 @@ npm test
 - **構造診断（L3）**: `aat/` の教育的写像（合法／違反）。ArchSig・Lean・FieldSig は**実行しない**
 - **主張境界・語彙対応の正本**: [papers/aat-bridge.md](papers/aat-bridge.md)
 
-CI は `examples/order-pipeline` の `npm test` を実行する。
+CI は `examples/order-pipeline` で `npm run typecheck` と `npm test` を実行する（不正 Typestate 遷移のコンパイル時負例を含む）。
 
 ## 検証方法論
 
