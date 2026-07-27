@@ -8,14 +8,19 @@
 
 1. **ミクロ論理層（CHL対応）** — Curry-Howard-Lambek対応。「型＝命題」「プログラム＝証明」に基づき、Discriminated UnionsとExhaustiveness Checkingで論理的矛盾を排除する。
 2. **型表現力拡張層（Domain & State Encoding）** — Parse, don't validate、Typestate、Refinement Types / Branded Typesにより、ドメインの不変量そのものを型にエンコードする。
-3. **マクロ構造層（AAT: Algebraic Architecture Theory）** — モジュールやアーキテクチャの結合をモノイド・関手・モナドなどの代数的構造として捉え、結合律や可換性を静的に保証する。
+3. **マクロ構造層（AAT: Algebraic Architecture Theory）** — モジュールやアーキテクチャの結合をモノイド・関手・モナドなどの代数的構造として捉え、結合律や可換性を静的に保証する。本稿では複数の系譜を束ねる統合的呼称として用いる。
 4. **動的・意味検証層** — Property-Based Testingや契約テストにより、型システムが届かない実行時・時間・分散境界の性質を動的に補強する。
+
+## 検証方法論
+
+本文の改訂には Multi-Agent Debate 研究の知見を応用した多角的レビューを用いている。役割・指摘・改訂経緯は [papers/multi-agent-review.md](papers/multi-agent-review.md) を参照。
 
 ## 構成
 
 ```
 papers/
   type-driven-defense-layers.md   4層構造の本文
+  multi-agent-review.md           多角的レビューの方法論と検証記録
 ```
 
 ## 参考文献（抜粋）
@@ -27,5 +32,7 @@ papers/
 - Brady, E. (2017). *Type-Driven Development with Idris*.
 - Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.
 - Claessen, K., & Hughes, J. (2000). *QuickCheck*. ICFP.
+- Du, Y., et al. (2023). *Improving Factuality and Reasoning in Language Models through Multiagent Debate*.
+- Perez, E., et al. (2022). *Red Teaming Language Models with Language Models*. EMNLP.
 
-完全な参考文献リストは [papers/type-driven-defense-layers.md](papers/type-driven-defense-layers.md) の末尾を参照。
+完全な参考文献リストは本文およびレビュー文書の末尾を参照。

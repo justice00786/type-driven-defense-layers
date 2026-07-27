@@ -2,7 +2,7 @@
 
 ## 要旨
 
-本稿は、現代の型駆動開発（Type-Driven Development）を、単一の変数の型から分散システム全体に至るまで、数学的構造（型論・圏論・代数学）を用いて不正な状態と論理的矛盾を段階的に遮断する「多重防衛線」として体系化する。具体的には、（1）Curry-Howard-Lambek対応（CHL対応）に基づくミクロ論理層、（2）ドメイン・状態エンコーディングによる型表現力拡張層、（3）代数的アーキテクチャ理論（Algebraic Architecture Theory, AAT）によるマクロ構造層、（4）Property-Based Testingおよび契約テストによる動的・意味検証層という4階層からなるモデルを提示する。各層は独立した学術的系譜を持ちながら、静的証明・構造設計・動的実証という一貫した秩序のもとで相互補完的に機能する。本稿ではこのモデルの階層構造、各層の保証メカニズム、およびデータが型を通じて信頼性を獲得していくパイプラインを示すとともに、各層を支える代表的文献を整理する。
+本稿は、現代の型駆動開発（Type-Driven Development）を、単一の変数の型から分散システム全体に至るまで、数学的構造（型論・圏論・代数学）を用いて不正な状態と論理的矛盾を段階的に遮断する「多重防衛線」として体系化する。具体的には、（1）Curry-Howard-Lambek対応（CHL対応）に基づくミクロ論理層、（2）ドメイン・状態エンコーディングによる型表現力拡張層、（3）代数的アーキテクチャ理論（Algebraic Architecture Theory, AAT）によるマクロ構造層、（4）Property-Based Testingおよび契約テストによる動的・意味検証層という4階層からなるモデルを提示する。各層は独立した学術的系譜を持ちながら、静的証明・構造設計・動的実証という一貫した秩序のもとで相互補完的に機能する。本稿ではこのモデルの階層構造、各層の保証メカニズムと限界、およびデータが型を通じて信頼性を獲得していくパイプラインを示すとともに、各層を支える代表的文献を整理する。第3層の呼称「AAT」は本稿独自の統合的呼称である。
 
 **キーワード**：型駆動開発、Curry-Howard-Lambek対応、Typestate、代数的設計、Property-Based Testing
 
@@ -27,7 +27,7 @@
 │    - Typestate Pattern（状態遷移の型エンコード）                  │
 │    - Refinement Types / Branded Types                            │
 ├─────────────────────────────────────────────────────────────────┤
-│ 3. マクロ構造層：AAT（Algebraic Architecture Theory）              │
+│ 3. マクロ構造層：AAT（本稿独自の統合的呼称）                        │
 │    - モノイド・関手・モナドによるモジュール結合                    │
 │    - 結合律・単位元・可換性の静的保証                              │
 │    - Obstruction（構造的衝突）の代数的検出                        │
@@ -43,12 +43,12 @@
 
 ## 3. 各レイヤーの役割とメカニズム
 
-| レイヤー | 対象範囲 | 保証メカニズム | 代表的な技術・手法 |
-|---|---|---|---|
-| ① CHL対応 | 単体の関数・型 | 論理的矛盾の排除。「型が存在しない＝偽」「分岐の網羅＝証明完了」 | Discriminated Unions、`never`型による全称性検証（`assertNever`） |
-| ② 型表現の拡張 | ドメイン境界・状態 | 不正状態・無効操作の排除。データの正当性を型へと変換して証明 | Parse, don't validate、Typestate（遷移不能操作の型エラー化）、Branded Types |
-| ③ AAT | モジュール間・アーキテクチャ | 結合における代数法則の維持。分割・結合を経ても意味（Law）が崩れない構造 | モノイド結合（A・B）、関手・準同型によるレイヤー間写像、Obstruction分析 |
-| ④ 動的・意味検証 | 型システムの外側・分散境界 | 代数法則と境界の動的補強。コンパイル時証明が届かない時間・実行・通信をアサート | Property-Based Testing（fast-check）、Pact / OpenAPI契約テスト、IdempotencyKeyの状態検証 |
+| レイヤー | 対象範囲 | 保証メカニズム | 代表的な技術・手法 | 各層の限界 |
+|---|---|---|---|---|
+| ① CHL対応 | 単体の関数・型 | 論理的矛盾の排除。「型が存在しない＝偽」「分岐の網羅＝証明完了」 | Discriminated Unions、`never`型による全称性検証（`assertNever`） | `any`・型アサーション・非nullアサーションなど、実務の型システムには健全性(soundness)を破る「逃げ道」が存在し、CH対応は理想化されたモデルである点に注意が必要 |
+| ② 型表現の拡張 | ドメイン境界・状態 | 不正状態・無効操作の排除。データの正当性を型へと変換して証明 | Parse, don't validate、Typestate（遷移不能操作の型エラー化）、Branded Types | 型による表現力の拡張は設計・保守コストを伴う。すべてのドメインで費用対効果が見合うわけではない |
+| ③ AAT | モジュール間・アーキテクチャ | 結合における代数法則の維持。分割・結合を経ても意味（Law）が崩れない構造 | モノイド結合（A・B）、関手・準同型によるレイヤー間写像、Obstruction分析 | 「AAT」という名称の学術分野は確認できず、法則（Law）の維持はコード上のテストで裏付けない限り宣言に留まりやすい |
+| ④ 動的・意味検証 | 型システムの外側・分散境界 | 代数法則と境界の動的補強。コンパイル時証明が届かない時間・実行・通信をアサート | Property-Based Testing（fast-check）、Pact / OpenAPI契約テスト、IdempotencyKeyの状態検証 | PBTや契約テストは有限のサンプルによる確率的な信頼性向上であり、証明ではない。反例が見つからないことは正しさの証明にはならない |
 
 ### 3.1 レイヤー1：ミクロ論理層（CHL対応）
 
@@ -60,7 +60,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 ### 3.3 レイヤー3：マクロ構造層（AAT）
 
-第3層は、モジュールやアーキテクチャ全体の結合を代数的構造（モノイド、関手、モナドなど）として捉える。結合律・単位元・可換性といった代数法則を静的に保証することで、システムの分割・再結合が意味を損なわないことを構造的に保証する。結合時に生じる構造的衝突は「Obstruction」として代数的に検出される。
+第3層は、モジュールやアーキテクチャ全体の結合を代数的構造（モノイド、関手、モナドなど）として捉える。結合律・単位元・可換性といった代数法則を静的に保証することで、システムの分割・再結合が意味を損なわないことを構造的に保証する。結合時に生じる構造的衝突は「Obstruction」として代数的に検出される。なお「AAT（Algebraic Architecture Theory）」という呼称自体は、モノイド・関手・モナドや Algebra-Driven Design、Applied Category Theory などの系譜を本稿が統合するために用いた独自の呼称である。
 
 ### 3.4 レイヤー4：動的・意味検証層
 
@@ -104,8 +104,8 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 ### 5.3 レイヤー3：マクロ構造層（AAT）
 
 - Maguire, S. (2021). *Algebra-Driven Design*. Leanpub. APIや構造を代数的仕様（Types & Laws）として先に設計し、Property-Based Testingで検証したのち実装を導出する「代数駆動設計」のガイドブック。
-- Bartholomew et al. / 応用圏論（Applied Category Theory, ACT）関連研究群。モノイダル圏やWiring Diagramsを用いてソフトウェアアーキテクチャの結合性を構造的に証明する研究群。
-- Goguen, J. (1992). *An Algebraic Approach to Software Architecture*. ソフトウェアアーキテクチャの結合やインターフェース変換をSheafやCategoryといった代数的構造として定義できると主張した古典的研究。
+- Spivak, D. I., & Vicary, J. (Eds.) (2020). *Applied Category Theory 2020 (ACT2020)*. arXiv:2101.12046 に関連するWiring Diagrams研究群。
+- Goguen, J. (1996). *Parameterized Programming and Software Architecture*. Proceedings of the 5th International Conference on Software Reuse (ICSR). ソフトウェアアーキテクチャの結合やインターフェース変換を代数的に扱う関連研究。
 
 ### 5.4 レイヤー4：動的・意味検証層
 
@@ -114,7 +114,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 ## 6. 結論
 
-現代の型駆動開発は、単に型注釈を記述する技術ではなく、静的証明・構造設計・動的実証という一貫した数学的秩序によってソフトウェアの健全性を多重に防衛するアプローチである。第一に、CHL対応はコードの矛盾を型チェッカーにとって不可能な状態として排除する。第二に、TypestateおよびParse, don't validateはドメインの不変量を型そのものにエンコードする。第三に、AATはシステム全体の結合をモノイドや準同型といった代数的法則として設計する。第四に、Property-Based Testingおよび契約テストは、型システムが物理的に到達し得ない境界や意味的正しさを動的に補強する。この4層構造は、それぞれ独立した学術的系譜を持ちながらも、対象範囲を段階的に拡大しつつ相互補完的に機能する統合的な設計思想として理解されるべきである。
+現代の型駆動開発は、単に型注釈を記述する技術ではなく、静的証明・構造設計・動的実証という一貫した数学的秩序によってソフトウェアの健全性を多重に防衛するアプローチである。第一に、CHL対応はコードの矛盾を型チェッカーにとって不可能な状態として排除する。第二に、TypestateおよびParse, don't validateはドメインの不変量を型そのものにエンコードする。第三に、AAT（本稿独自の統合的呼称）はシステム全体の結合をモノイドや準同型といった代数的法則として設計する。第四に、Property-Based Testingおよび契約テストは、型システムが物理的に到達し得ない境界や意味的正しさを動的に補強する。各層には実務上の限界があり、保証の様式を過信すべきではない。この4層構造は、それぞれ独立した学術的系譜を持ちながらも、対象範囲を段階的に拡大しつつ相互補完的に機能する統合的な設計思想として理解されるべきである。
 
 ## 参考文献
 
@@ -124,6 +124,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 4. Strom, R. E., & Yemini, S. (1986). Typestate: A programming language mechanism for enhancing software reliability. *IEEE Transactions on Software Engineering*, 12(1), 157–171.
 5. Brady, E. (2017). *Type-Driven Development with Idris*. Manning Publications.
 6. Maguire, S. (2021). *Algebra-Driven Design*. Leanpub.
-7. Goguen, J. (1992). An Algebraic Approach to Software Architecture. *Software Architecture Research*.
-8. Claessen, K., & Hughes, J. (2000). QuickCheck: A lightweight tool for random testing of Haskell programs. *Proceedings of ICFP 2000*.
-9. Moggi, E. (1991). Notions of computation and monads. *Information and Computation*, 93(1), 55–92.
+7. Goguen, J. (1996). Parameterized Programming and Software Architecture. *Proceedings of ICSR 1996*.
+8. Spivak, D. I., & Vicary, J. (Eds.) (2020). Applied Category Theory 2020 (ACT2020). arXiv:2101.12046.
+9. Claessen, K., & Hughes, J. (2000). QuickCheck: A lightweight tool for random testing of Haskell programs. *Proceedings of ICFP 2000*.
+10. Moggi, E. (1991). Notions of computation and monads. *Information and Computation*, 93(1), 55–92.
