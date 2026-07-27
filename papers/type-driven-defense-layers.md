@@ -2,7 +2,7 @@
 
 ## 要旨
 
-本稿は、現代の型駆動開発（Type-Driven Development）を、単一の変数の型から分散システム全体に至るまで、数学的構造（型論・圏論・代数学）を用いて不正な状態と論理的矛盾を段階的に遮断する「多重防衛線」として体系化する。具体的には、（1）Curry-Howard-Lambek対応（CHL対応）に基づくミクロ論理層、（2）ドメイン・状態エンコーディングによる型表現力拡張層、（3）代数的アーキテクチャ理論（Algebraic Architecture Theory, AAT）によるマクロ構造層、（4）Property-Based Testingおよび契約テストによる動的・意味検証層という4階層からなるモデルを提示する。各層は独立した学術的系譜を持ちながら、静的証明・構造設計・動的実証という一貫した秩序のもとで相互補完的に機能する。本稿ではこのモデルの階層構造、各層の保証メカニズムと限界、およびデータが型を通じて信頼性を獲得していくパイプラインを示すとともに、各層を支える代表的文献を整理する。第3層の AAT は iroha1203 による Lean 形式化を伴う研究プロジェクトを典拠とする。
+本稿は、現代の型駆動開発（Type-Driven Development）を、単一の変数の型から分散システム全体に至るまで、数学的構造（型論・圏論・代数学）を用いて不正な状態と論理的矛盾を段階的に遮断する「多重防衛線」として体系化する。具体的には、（1）Curry-Howard-Lambek対応（CHL対応）に基づくミクロ論理層、（2）ドメイン・状態エンコーディングによる型表現力拡張層、（3）代数的アーキテクチャ理論（Algebraic Architecture Theory, AAT）によるマクロ構造層、（4）Property-Based Testingおよび契約テストによる動的・意味検証層という4階層からなるモデルを提示する。各層は独立した学術的系譜を持ちながら、静的証明・構造設計・動的実証という一貫した秩序のもとで相互補完的に機能する。本稿ではこのモデルの階層構造、各層の保証メカニズムと限界、データが型を通じて信頼性を獲得していく時系列（②→①→④）、および第3層をデータの後段ではなく構造診断として分離して示す。注文ドメインの最小デモと AAT 語彙の教育的写像を同梱するが、ArchSig / FieldSig / Lean の実行や公式スキーマ適合は主張しない。第3層の AAT は iroha1203 による Lean 形式化を伴う研究プロジェクトを典拠とする。
 
 **キーワード**：型駆動開発、Curry-Howard-Lambek対応、Typestate、代数的設計、Property-Based Testing、Algebraic Architecture Theory
 
@@ -139,7 +139,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 ## 7. 結論
 
-現代の型駆動開発は、単に型注釈を記述する技術ではなく、静的証明・構造設計・動的実証という一貫した数学的秩序によってソフトウェアの健全性を多重に防衛するアプローチである。第一に、CHL対応はコードの矛盾を型チェッカーにとって不可能な状態として排除する。第二に、TypestateおよびParse, don't validateはドメインの不変量を型そのものにエンコードする。第三に、AAT（iroha1203, 2026）はアーキテクチャの不変量を代数幾何的構造として診断する。第四に、Property-Based Testingおよび契約テストは、型システムが物理的に到達し得ない境界や意味的正しさを動的に補強する。各層には実務上の限界があり、保証の様式を過信すべきではない。この4層構造は、それぞれ独立した学術的系譜を持ちながらも、対象範囲を段階的に拡大しつつ相互補完的に機能する統合的な設計思想として理解されるべきである。
+現代の型駆動開発は、単に型注釈を記述する技術ではなく、静的証明・構造設計・動的実証という一貫した数学的秩序によってソフトウェアの健全性を多重に防衛するアプローチである。第一に、CHL対応はコードの矛盾を型チェッカーにとって不可能な状態として排除する。第二に、TypestateおよびParse, don't validateはドメインの不変量を型そのものにエンコードする。第三に、AAT（iroha1203, 2026）はアーキテクチャの不変量を代数幾何的構造として診断する。第四に、Property-Based Testingおよび契約テストは、型システムが物理的に到達し得ない境界や意味的正しさを動的に補強する。レイヤー番号は対象範囲の分類であり、データの時系列や構造診断と同一視してはならない。同梱デモは各層の遮断範囲と限界を具体化するが、AAT ツール実行や定理の再現を主張するものではない。各層には実務上の限界があり、保証の様式を過信すべきではない。この4層構造は、それぞれ独立した学術的系譜を持ちながらも、対象範囲を段階的に拡大しつつ相互補完的に機能する統合的な設計思想として理解されるべきである。語彙対応と非主張の正本は [aat-bridge.md](aat-bridge.md) を参照する。
 
 ## 参考文献
 
@@ -148,7 +148,7 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 3. King, A. (2019). Parse, don't validate. Personal essay / functional programming literature.
 4. Strom, R. E., & Yemini, S. (1986). Typestate: A programming language mechanism for enhancing software reliability. *IEEE Transactions on Software Engineering*, 12(1), 157–171.
 5. Brady, E. (2017). *Type-Driven Development with Idris*. Manning Publications.
-6. iroha1203 (2026). *Algebraic Architecture Theory & Software Field Theory* (AlgebraicArchitectureTheoryV2). GitHub. https://github.com/iroha1203/AlgebraicArchitectureTheoryV2
+6. iroha1203 (2026). *Algebraic Architecture Theory & Software Field Theory* (AlgebraicArchitectureTheoryV2). GitHub. https://github.com/iroha1203/AlgebraicArchitectureTheoryV2 （本稿の参照スナップショット: commit `89396ac98c84ee332bcb8ae85ee863f13c84e042`）
 7. Goguen, J. (1992). Sheaf semantics for concurrent interacting objects. *Mathematical Structures in Computer Science*, 2(2), 159–191.
 8. Mac Lane, S., & Moerdijk, I. (1992). *Sheaves in Geometry and Logic: A First Introduction to Topos Theory*. Springer.
 9. Goguen, J. (1996). Parameterized Programming and Software Architecture. *Proceedings of ICSR 1996*.
