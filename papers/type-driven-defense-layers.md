@@ -28,7 +28,7 @@
 │    - Refinement Types / Branded Types                            │
 ├─────────────────────────────────────────────────────────────────┤
 │ 3. マクロ構造層：AAT（Algebraic Architecture Theory）              │
-│    - iroha1203によるLean形式化研究に基づく（§5.3参照）            │
+│    - iroha1203によるLean形式化研究に基づく（§6.3参照）            │
 │    - アーキテクチャ原子（atom）・AATサイト・層（sheaf）・法則代数   │
 │      （law algebra）・障害イデアル層（obstruction ideal sheaf）・  │
 │      合法軌跡（lawful locus）・アーキテクチャスキームによる代数幾何的記述 │
@@ -96,9 +96,9 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 | 層 | デモ上の実体 | 遮断するもの | 遮断しないもの（限界） |
 | --- | --- | --- | --- |
-| ② | `src/brands.ts`（`OrderId` / `Money` の parse）、`src/orderTypestate.ts`（`Order<S>` phantom Typestate: Draft→Placed→Paid） | 不正な ID・負の金額、許可されない状態遷移 | parse を迂回する型アサーション（`src/escapes.ts`） |
-| ① | `describeOrder` と `assertNever` による網羅 | 未処理の状態分岐 | `as` による逃げ道で CHL が無力化されること |
-| ④ | `test/properties.test.ts`、`schemas/order-boundary.schema.json` | 有限サンプル内での法則違反・境界スキーマ不整合 | 全入力空間の証明（有限サンプルの限界をテストコメントで注記） |
+| ② | `src/brands.ts`（`OrderId` / `Money` の parse）、`src/orderTypestate.ts`（`Order<S>` phantom Typestate: Draft→Placed→Paid）、不正遷移の型エラーは `test/typestate-negatives.ts` | 不正な ID・負の金額、許可されない状態遷移 | parse を迂回する型アサーション（`src/escapes.ts`） |
+| ① | `describeOrder` と `assertNever` による網羅 | 未処理の状態分岐 | `as` および不完全 switch（`src/escapes.ts` の `incompleteDescribe`）で CHL が無力化されること |
+| ④ | `test/properties.test.ts`、`test/schema.test.ts`、`schemas/order-boundary.schema.json` | 有限サンプル内での法則違反・境界スキーマ不整合 | 全入力空間の証明（有限サンプルの限界をテストコメントで注記） |
 
 **構造診断（③）**
 

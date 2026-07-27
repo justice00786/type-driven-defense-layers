@@ -39,7 +39,11 @@ papers/
   aat-bridge.md                   AAT語彙対応・主張等級・非主張
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
-  order-pipeline/                 注文ドメインの最小デモ（L2/L1/L4 + L3写像）
+  order-pipeline/
+    src/                          L2 branded parse / typestate、L1 網羅、escapes
+    test/                         L4 PBT・スキーマ解釈、typestate 負例
+    schemas/                      境界用 JSON Schema
+    aat/                          L3 教育的写像（合法／違反）と AAT ピン
 ```
 
 最新の本文はリポジトリ tip の [papers/type-driven-defense-layers.md](papers/type-driven-defense-layers.md)。版の変遷は git 履歴を参照。
