@@ -108,6 +108,13 @@ iroha1203 による Algebraic Architecture Theory（AAT）および関連ツー�
 公開理論テキスト: https://iroha1203.dev/aat/  
 上流リポジトリ: https://github.com/iroha1203/AlgebraicArchitectureTheoryV2
 
+SAGA 比較定理プレプリント（局所–大域の能力証明; 本リポは再現しない）:
+
+- 版 DOI: https://doi.org/10.5281/zenodo.21605207
+- 概念 DOI（最新版へのポインタ）: https://doi.org/10.5281/zenodo.21603761
+- Release tag: `saga-paper-v1.0.0`
+- 日本語解説（非一次）: https://zenn.dev/iroha1203/articles/084d26f42dde32
+
 ---
 
 ## 5. データ流と構造診断の分離
@@ -133,6 +140,7 @@ iroha1203 による Algebraic Architecture Theory（AAT）および関連ツー�
 4. SFT / FieldSig による将来予測
 5. 公式 ArchMap / LawPolicy スキーマへの適合保証
 6. ArchSig をこれらの JSON に対して実行した結果の妥当性
+7. SAGA 論文の release identity（Lean status・ArchSig 計測・`saga-paper-v1.0.0`）の再現または追認
 
 ---
 
@@ -147,5 +155,6 @@ iroha1203 による Algebraic Architecture Theory（AAT）および関連ツー�
 - [x] 「スキーマ準拠」「定理」「証明済み」などの強い語がデモ成果物に付いていない
 - [x] FieldSig / SFT 予測への踏み込みがない
 - [x] §3（モノイド・関手・モナド近似）が §2.2 の非同一視と整合し、類比表を再掲していない
+- [x] SAGA 版 DOI・査読誌未掲載・SAGA と展望（Architecture scheme / SFT）の区別が本文と一致している
 
 （本版作成時点で上記を確認済み。改訂時は該当項目をいったん外し、再確認後に戻す。）

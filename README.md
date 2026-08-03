@@ -8,7 +8,7 @@
 
 1. **ミクロ論理層（CHL対応）** — Curry-Howard-Lambek対応。「型＝命題」「プログラム＝証明」に基づき、Discriminated UnionsとExhaustiveness Checkingで論理的矛盾を排除する。
 2. **型表現力拡張層（Domain & State Encoding）** — Parse, don't validate、Typestate、Refinement Types / Branded Typesにより、ドメインの不変量そのものを型にエンコードする。
-3. **マクロ構造層（AAT: Algebraic Architecture Theory）** — モジュールやアーキテクチャの結合を代数幾何的構造（AATサイト・層・法則代数・障害イデアル層など）として捉え、結合の不変量を診断する。[iroha1203/AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2) の理論に基づく。
+3. **マクロ構造層（AAT: Algebraic Architecture Theory）** — モジュールやアーキテクチャの結合を代数幾何的構造（AATサイト・層・法則代数・障害イデアル層など）として捉え、結合の不変量を診断する。[iroha1203/AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2) の理論に基づく。局所–大域の能力証明は Nakahata (2026) *SAGA* プレプリント（[doi:10.5281/zenodo.21605207](https://doi.org/10.5281/zenodo.21605207)）を参照する。
 4. **動的・意味検証層** — Property-Based Testingや契約テストにより、型システムが届かない実行時・時間・分散境界の性質を動的に補強する。
 
 ## デモ（注文パイプライン）
@@ -56,6 +56,7 @@ examples/
 - King, A. (2019). *Parse, don't validate*.
 - Strom, R. E., & Yemini, S. (1986). *Typestate: A programming language mechanism for enhancing software reliability*.
 - Brady, E. (2017). *Type-Driven Development with Idris*.
+- Nakahata, H. (2026). *SAGA: A Comparison Theorem for Local-to-Global Software Architecture*. Zenodo. https://doi.org/10.5281/zenodo.21605207
 - iroha1203 (2026). *Algebraic Architecture Theory & Software Field Theory*. GitHub.
 - Goguen, J. (1992). *Sheaf semantics for concurrent interacting objects*. MSCS.（AAT関連系譜）
 - Mac Lane, S., & Moerdijk, I. (1992). *Sheaves in Geometry and Logic*.（AAT関連系譜）
