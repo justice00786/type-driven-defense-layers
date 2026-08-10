@@ -59,6 +59,8 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 第2層は、ドメインの不変量そのものを型に刻み込む設計技法群である。「Parse, don't validate」は、真偽値を返す検証ではなく、より狭い型への変換（パース）を通じて「有効なデータである」という証明手形を発行する考え方である。Typestateパターンはオブジェクトの状態遷移を型システムに反映し、許されない操作をコンパイル時に排除する。Refinement Types・Branded Typesは値の制約や意味的な領域をさらに精緻化する。
 
+隣接分野からの薄い補強として、入力を形式言語として厳密に認識する LangSec、通信プロトコルの順序を振る舞い型で縛るセッション型・マルチパーティ・セッション型（MPST）、実行時検証の証拠を型で持ち回る Ghost of Departed Proofs（GoDP）がある。LangSec は「Parse, don't validate」と親和し、セッション型・MPST は Typestate の通信側拡張、GoDP は Brand／証明手形の近縁であるが Brand と同一視しない。詳細と文献は [lbs-defense-in-depth-survey.md](lbs-defense-in-depth-survey.md) §3–5 を参照する（本稿 §2 地図・§3 表のコア技術は変えない）。
+
 ### 3.3 レイヤー3：マクロ構造層（AAT）
 
 第3層は、モジュールやアーキテクチャ全体を代数幾何的な対象として捉える。第3層の**直接典拠**は二層からなる。（1）iroha1203 による Algebraic Architecture Theory（[AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2)）の理論・ツール全体、および（2）局所–大域の能力証明としての Nakahata (2026) *SAGA* プレプリント（https://doi.org/10.5281/zenodo.21605207）。アーキテクチャ原子、AATサイト、層（sheaf）、法則代数、障害イデアル層（obstruction ideal sheaf）、合法軌跡（lawful locus）、アーキテクチャスキーム、Čech降下といった語彙によって、結合における不変量の維持や構造的衝突を診断する。AAT 自体は査読付き学術誌への掲載物ではなく、Lean 形式化を伴う独立研究である。SAGA 比較定理は Zenodo プレプリントとして公開済み（証明・Lean 形式化 status・ArchSig 計測の三層を同一 release identity に固定）だが、査読誌論文ではない。その一方、サイト・層・降下による局所–大域整合の定式化自体は、Goguen (1992) の層意味論や Mac Lane & Moerdijk (1992) に代表される層論、および古典的な代数的仕様の研究に遡る**確立した査読付き系譜**に位置づけられる。障害イデアル層・合法軌跡など SAGA 外の構成や Architecture scheme / SFT といった展望は、その系譜の上に置かれた形式化研究・研究展望であり、査読公開物と同一視しない。
