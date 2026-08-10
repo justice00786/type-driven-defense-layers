@@ -67,6 +67,8 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 
 実務接続の語彙として、同プロジェクトは **ArchSig**（供給された ArchMap・LawPolicy 等から境界付きの構造診断・測定パケットを生成する）と **FieldSig**（ArchSig の handoff とワークフロー証拠を SFT 寄りの進化測定へ写す）を提供する。本稿および同梱デモはこれらのツールを**実行しない**。語彙対応・主張等級・非主張の正本は [aat-bridge.md](aat-bridge.md) を参照する（教育的写像の参照コミット `89396ac98c84ee332bcb8ae85ee863f13c84e042`）。ツール出力を Lean 上の形式定理と同一視しない。
 
+隣接のプログラム検証として、F*・Verus・Kani 等はプログラムの正当性証明を扱うが、本稿の第3層（AAT によるアーキテクチャ構造診断）と**同一視しない**。AAT／SAGA の主張等級は引き続き [aat-bridge.md](aat-bridge.md) を正本とし、サーベイ側の形式検証整理は [lbs-defense-in-depth-survey.md](lbs-defense-in-depth-survey.md) §7 を参照する。
+
 ### 3.4 レイヤー4：動的・意味検証層
 
 第4層は、型システムが物理的に到達できない領域——実行時の振る舞い、時間的性質、ネットワークを跨ぐ通信——を動的テストによって補強する。Property-Based Testingは代数法則をランダム入力によって機械的に検証し、契約テスト（Pact / OpenAPI）はサービス境界を跨いだスキーマの同型性を維持する。冪等性を保証するBrandや時間型は、副作用の整合性を実証する。
@@ -111,6 +113,8 @@ Curry-Howard-Lambek対応は、「型」と「論理命題」、「プログラ�
 | 法則選択 | `aat/law_policy.json` | 依存方向・境界 DTO の選択された law |
 
 これらの JSON は ArchMap / LawPolicy の公式スキーマ適合や ArchSig 実行結果を主張しない。ピンと非主張は `aat/AAT_PIN.md` および [aat-bridge.md](aat-bridge.md) を正本とする。
+
+本デモの対象外は、セッション型・MPST、GoDP、IFC、メモリ安全言語（MSL）政策である。これらは正本の薄い補強・層外前提・隣接ポインタであり、デモ実装には含めない。
 
 ## 6. 各層を支える代表的文献
 
