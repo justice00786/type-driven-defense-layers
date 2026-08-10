@@ -28,6 +28,10 @@ npm test
 
 CI は `examples/order-pipeline` で `npm run typecheck` と `npm test` を実行する（不正 Typestate 遷移のコンパイル時負例を含む）。
 
+## 隣接サーベイ
+
+正本の4層モデルを置換しない、LBS / LangSec / IFC / メモリ安全言語政策からの理論的補強サーベイは [papers/lbs-defense-in-depth-survey.md](papers/lbs-defense-in-depth-survey.md) を参照。従来 Defense-in-Depth への5層対応であり、帰属・主張境界・正本との対応地図を冒頭に明記している。
+
 ## 検証方法論
 
 本文の改訂には Multi-Agent Debate 研究の知見を応用した多角的レビューを用いている。役割・指摘・改訂経緯（引用訂正や Red Team の偽陰性を含む）は [papers/multi-agent-review.md](papers/multi-agent-review.md) を参照。
@@ -36,7 +40,8 @@ CI は `examples/order-pipeline` で `npm run typecheck` と `npm test` を実�
 
 ```
 papers/
-  type-driven-defense-layers.md   4層構造の本文
+  type-driven-defense-layers.md   4層構造の本文（正本）
+  lbs-defense-in-depth-survey.md  LBS / DiD 5層対応の隣接サーベイ
   aat-bridge.md                   AAT語彙対応・主張等級・非主張・近似と限界
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
