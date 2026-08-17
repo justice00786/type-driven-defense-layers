@@ -36,7 +36,7 @@ After an inbox event has been accepted, throw is forbidden — including `assert
 - `{ ok }` — operation success or failure (`assignTicket`), with a closed `reason` union.
 - `FormRedisplay` is a third envelope (optional `message` / `fieldErrors`) for UI redisplay. Do not merge it with `CommandResult`.
 
-Failures use `{ ok: false }` and early return (`if (!result.ok) return result`). There is no `Either` chain.
+Failures use `{ ok: false }` and early return (`if (!result.ok) return result`). There is no `Either` chain. Composition default and when to consider ROP: [envelopes-and-control.md](../envelopes-and-control.md).
 
 ## Layout
 

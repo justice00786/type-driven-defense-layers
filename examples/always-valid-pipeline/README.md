@@ -19,7 +19,7 @@ npm test
 - `ParsedInput` (schema-shaped boundary type) being used as `Ticket`
 - Empty / malformed fields at the boundary
 
-Parse once is encoded in the **signature**: `publish(ticket: Ticket)` cannot take `ParsedInput` or `unknown`. See `test/negatives.ts`.
+Parse once is encoded in the **signature**: `publish(ticket: Ticket)` cannot take `ParsedInput` or `unknown`. See `test/negatives.ts`. ROP, if any, stays outside the inner API: [envelopes-and-control.md](../envelopes-and-control.md).
 
 ## What it does not block
 

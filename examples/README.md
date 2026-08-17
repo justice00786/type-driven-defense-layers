@@ -13,13 +13,22 @@ The paper case study remains [order-pipeline](./order-pipeline/) — a single or
 | [state-and-result](./state-and-result/) | L1 (+ `{ kind }` typestate) | Stage-specific fields, `{ ok }` vs `{ kind }`, illegal bags, soft-fallback | order-pipeline typestate keeps the same payload and uses a phantom parameter |
 | [effects-at-boundary](./effects-at-boundary/) | L4 | `CalendarDate` vs `Instant`; `ReuseKey` as a name only; accept-then-handle without throw | order-pipeline L4 is PBT + schema, not time / reuse / redelivery |
 
+## Guides
+
+Two notes; they are a pair, not substitutes.
+
+- **Control** (envelopes, throw vs no-throw, early return vs local `bind`): [envelopes-and-control.md](./envelopes-and-control.md)
+- **Tooling** (when to add fp-ts or PBT after that choice): [fp-ts-and-pbt.md](./fp-ts-and-pbt.md)
+
 ## Throw vs no-throw
 
 - **Pure functions** (`state-and-result` `describeTicket`): `assertNever` throws. Missing a variant is a logic bug.
 - **After inbox accept** (`effects-at-boundary`): throw is forbidden, including `assertNever`. Use `satisfies never` and `return`. Unknown actions are ignored (no side effect).
 
-Neither rule is universal. Read both READMEs.
+Neither rule is universal. Read both READMEs. The full tree is [envelopes-and-control.md](./envelopes-and-control.md).
 
 ## Claim boundary
 
 These demos do not run ArchSig, Lean, or FieldSig. They do not add Zod, fp-ts, PBT, or AAT JSON. Branding is not a uniqueness or idempotency proof.
+
+When to add fp-ts or PBT (and what they do not prove): [fp-ts-and-pbt.md](./fp-ts-and-pbt.md). Control rules stay in [envelopes-and-control.md](./envelopes-and-control.md).

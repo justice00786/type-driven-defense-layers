@@ -25,6 +25,9 @@ npm test
 - **データ流**: L2 parse / typestate → L1 exhaustiveness → L4 PBT・境界スキーマ
 - **構造診断（L3）**: `aat/` の教育的写像（合法／違反）。ArchSig・Lean・FieldSig は**実行しない**
 - **主張境界・語彙対応の正本**: [papers/aat-bridge.md](papers/aat-bridge.md)
+- **カタログ利用指針（二枚組）**:
+  - 結果封筒と throw / ROP の使い分け: [examples/envelopes-and-control.md](examples/envelopes-and-control.md)
+  - fp-ts / PBT の使い分け（カタログが足さない理由と、本番で足す判断）: [examples/fp-ts-and-pbt.md](examples/fp-ts-and-pbt.md)
 - **パターンカタログ**（論文は置換しない）:
   - [always-valid-pipeline](examples/always-valid-pipeline/) — L2 Parse once（境界型 ≠ ドメイン型）
   - [state-and-result](examples/state-and-result/) — L1 `{ kind }` / `{ ok }`、Illegal bag、soft-fallback
@@ -50,6 +53,8 @@ papers/
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
   README.md                       デモ地図（正本 vs カタログ、throw の可否）
+  envelopes-and-control.md        結果封筒と throw / ROP の使い分け
+  fp-ts-and-pbt.md                fp-ts / PBT の位置づけと使い分け
   order-pipeline/                 論文§5 の正本（L2→L1→L4 + AAT 写像）
   always-valid-pipeline/          L2 Parse once
   state-and-result/               L1 `{ kind }` / `{ ok }`

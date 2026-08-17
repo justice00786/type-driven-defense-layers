@@ -20,7 +20,7 @@ npm test
 
 ## Throw vs no-throw
 
-This package forbids throw **after accept**. Pure-function `assertNever` in `state-and-result` still throws. See [../README.md](../README.md).
+This package forbids throw **after accept**. Pure-function `assertNever` in `state-and-result` still throws. See [../README.md](../README.md). `HandleResult` is not a `{ ok }` result; do not ROP after accept. [envelopes-and-control.md](../envelopes-and-control.md).
 
 ## What it does not claim
 

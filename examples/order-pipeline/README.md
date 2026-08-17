@@ -19,7 +19,7 @@ npm run typecheck
 | `src/orderTypestate.ts` | L2 + L1 | Phantom typestate + exhaustiveness |
 | `src/escapes.ts` | L1 limit | `as` + incomplete switch (excluded from typecheck) |
 | `test/typestate-negatives.ts` | L2 | `@ts-expect-error` illegal transitions (typecheck only) |
-| `test/properties.test.ts` | L4 | Property-based tests |
+| `test/properties.test.ts` | L4 | Property-based tests ([when to use](../fp-ts-and-pbt.md)) |
 | `test/schema.test.ts` / `test/boundarySchema.ts` | L4 | Checks driven by the schema artifact |
 | `schemas/order-boundary.schema.json` | L4 | Boundary JSON Schema |
 | `aat/` | L3 | Pedagogical ArchMap / LawPolicy mappings |
