@@ -1,0 +1,39 @@
+name: examples-catalog
+
+on:
+  push:
+    paths:
+      - "examples/always-valid-pipeline/**"
+      - "examples/state-and-result/**"
+      - "examples/effects-at-boundary/**"
+      - ".github/workflows/examples-catalog.yml"
+  pull_request:
+    paths:
+      - "examples/always-valid-pipeline/**"
+      - "examples/state-and-result/**"
+      - "examples/effects-at-boundary/**"
+      - ".github/workflows/examples-catalog.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example:
+          - always-valid-pipeline
+          - state-and-result
+          - effects-at-boundary
+    defaults:
+      run:
+        working-directory: examples/${{ matrix.example }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: examples/${{ matrix.example }}/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test

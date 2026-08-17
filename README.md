@@ -11,9 +11,9 @@
 3. **マクロ構造層（AAT: Algebraic Architecture Theory）** — モジュールやアーキテクチャの結合を代数幾何的構造（AATサイト・層・法則代数・障害イデアル層など）として捉え、結合の不変量を診断する。[iroha1203/AlgebraicArchitectureTheoryV2](https://github.com/iroha1203/AlgebraicArchitectureTheoryV2) の理論に基づく。局所–大域の能力証明は Nakahata (2026) *SAGA* プレプリント（[doi:10.5281/zenodo.21605207](https://doi.org/10.5281/zenodo.21605207)）を参照する。
 4. **動的・意味検証層** — Property-Based Testingや契約テストにより、型システムが届かない実行時・時間・分散境界の性質を動的に補強する。
 
-## デモ（注文パイプライン）
+## デモ
 
-再現可能な最小例は [examples/order-pipeline](examples/order-pipeline/) にある。
+論文 §5 の正本デモは [examples/order-pipeline](examples/order-pipeline/)（注文ライフサイクルを一本の糸として各層を具体化）。型防衛パターンのカタログは [examples/README.md](examples/README.md) を入口にする。
 
 ```bash
 cd examples/order-pipeline
@@ -25,8 +25,12 @@ npm test
 - **データ流**: L2 parse / typestate → L1 exhaustiveness → L4 PBT・境界スキーマ
 - **構造診断（L3）**: `aat/` の教育的写像（合法／違反）。ArchSig・Lean・FieldSig は**実行しない**
 - **主張境界・語彙対応の正本**: [papers/aat-bridge.md](papers/aat-bridge.md)
+- **パターンカタログ**（論文は置換しない）:
+  - [always-valid-pipeline](examples/always-valid-pipeline/) — L2 Parse once（境界型 ≠ ドメイン型）
+  - [state-and-result](examples/state-and-result/) — L1 `{ kind }` / `{ ok }`、Illegal bag、soft-fallback
+  - [effects-at-boundary](examples/effects-at-boundary/) — L4 時間型、冪等キーの名目付け、受理後 no-throw
 
-CI は `examples/order-pipeline` で `npm run typecheck` と `npm test` を実行する（不正 Typestate 遷移のコンパイル時負例を含む）。
+CI は `examples/order-pipeline` に加え、カタログ3パッケージで `npm run typecheck` と `npm test` を実行する。
 
 ## 隣接サーベイ
 
@@ -45,11 +49,11 @@ papers/
   aat-bridge.md                   AAT語彙対応・主張等級・非主張・近似と限界
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
-  order-pipeline/
-    src/                          L2 branded parse / typestate、L1 網羅、escapes
-    test/                         L4 PBT・スキーマ解釈、typestate 負例
-    schemas/                      境界用 JSON Schema
-    aat/                          L3 教育的写像（合法／違反）と AAT ピン
+  README.md                       デモ地図（正本 vs カタログ、throw の可否）
+  order-pipeline/                 論文§5 の正本（L2→L1→L4 + AAT 写像）
+  always-valid-pipeline/          L2 Parse once
+  state-and-result/               L1 `{ kind }` / `{ ok }`
+  effects-at-boundary/            L4 時間・再利用キー・再送
 ```
 
 最新の本文はリポジトリ tip の [papers/type-driven-defense-layers.md](papers/type-driven-defense-layers.md)。版の変遷は git 履歴を参照。
