@@ -51,6 +51,7 @@
 | 第4次→第4次補訂 | デモ（`escapes`・typestate 負例・境界スキーマ解釈）・要旨／結論・README／`READING.md`／参考文献 #6 | 不完全分岐・不正遷移の型エラー・スキーマ起点テストを強化。CI 記述と節番号・主張境界の文書整合を追補 | 計画反映レビューおよび横断整合レビューの残件対応（MAD 再実行なし） |
 | 第4次補訂→bridge §3追記 | `aat-bridge.md` 新§3・本文§2リンク・README／`READING.md`・チェックリスト | 第3層の「モノイド・関手・モナド」近似とその限界を bridge 正本に文書化。旧§3–§6を繰り下げ | [#3](https://github.com/justice00786/type-driven-defense-layers/issues/3)。MAD 全面再実行なし（チェックリストで代替） |
 | bridge §3追記→第5次改訂 | 本文 §3 / §3.3 / §6.3・参考文献 #6–#7、`aat-bridge.md`、`AAT_PIN.md`、README | Nakahata (2026) SAGA Zenodo プレプリント（版 DOI `10.5281/zenodo.21605207`）を局所–大域能力証明の公開典拠として追加。「査読未刊行」をプレプリント公開済み／査読誌未掲載に更新。教育的ピンと `saga-paper-v1.0.0` を分離記録 | ユーザー提示の一次情報（Zenodo + Zenn）。MAD 全面再実行なし（`aat-bridge.md` チェックリストで代替） |
+| 第5次→アンナプルナ読み | 本文 §3 限界列・§5・§6.3・結論、`aat-bridge.md` §8、`AAT_PIN.md`、`change.*`、`observation-blind-change` | 選んだ観測面では一致し対応面だけが分かれる1組を教育的読みとして追加。Lean 16定理の再現ではない。Gr4 / 因子 E は本文表に載せない | ユーザー提示の Zenn アンナプルナ記事 + 上流 G-101〜G-118。MAD 全面再実行なし（`aat-bridge.md` チェックリストで代替） |
 
 ## 4. AATに関するRed Teamの偽陰性
 

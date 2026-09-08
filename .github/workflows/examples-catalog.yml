@@ -6,12 +6,14 @@ on:
       - "examples/always-valid-pipeline/**"
       - "examples/state-and-result/**"
       - "examples/effects-at-boundary/**"
+      - "examples/observation-blind-change/**"
       - ".github/workflows/examples-catalog.yml"
   pull_request:
     paths:
       - "examples/always-valid-pipeline/**"
       - "examples/state-and-result/**"
       - "examples/effects-at-boundary/**"
+      - "examples/observation-blind-change/**"
       - ".github/workflows/examples-catalog.yml"
 
 jobs:
@@ -24,6 +26,7 @@ jobs:
           - always-valid-pipeline
           - state-and-result
           - effects-at-boundary
+          - observation-blind-change
     defaults:
       run:
         working-directory: examples/${{ matrix.example }}

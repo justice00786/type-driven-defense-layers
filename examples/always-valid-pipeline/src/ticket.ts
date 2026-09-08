@@ -21,6 +21,7 @@ export type Ticket = {
  * Factory: boundary type → Always-Valid Ticket.
  * Brand is a post-normalization refinement. This function does not re-parse.
  * `as TicketId` / `as Ticket` here is the minting point, not an inner-layer escape.
+ * This local shaping is a design choice, not AAT's comparison factor E.
  */
 export function toTicket(parsed: ParsedInput): Ticket {
   return {

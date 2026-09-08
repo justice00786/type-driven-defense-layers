@@ -32,8 +32,9 @@ npm test
   - [always-valid-pipeline](examples/always-valid-pipeline/) — L2 Parse once（境界型 ≠ ドメイン型）
   - [state-and-result](examples/state-and-result/) — L1 `{ kind }` / `{ ok }`、Illegal bag、soft-fallback
   - [effects-at-boundary](examples/effects-at-boundary/) — L4 時間型、冪等キーの名目付け、受理後 no-throw
+  - [observation-blind-change](examples/observation-blind-change/) — 選んだ観測は一致し、対応関係だけが追随の有無で分かれる
 
-CI は `examples/order-pipeline` に加え、カタログ3パッケージで `npm run typecheck` と `npm test` を実行する。
+CI は `examples/order-pipeline` に加え、カタログ4パッケージで `npm run typecheck` と `npm test` を実行する。
 
 ## 隣接サーベイ
 
@@ -59,6 +60,7 @@ examples/
   always-valid-pipeline/          L2 Parse once
   state-and-result/               L1 `{ kind }` / `{ ok }`
   effects-at-boundary/            L4 時間・再利用キー・再送
+  observation-blind-change/       観測面と対応面（追随の有無）
 ```
 
 最新の本文はリポジトリ tip の [papers/type-driven-defense-layers.md](papers/type-driven-defense-layers.md)。版の変遷は git 履歴を参照。

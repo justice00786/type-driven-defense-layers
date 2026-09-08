@@ -22,7 +22,7 @@ npm run typecheck
 | `test/properties.test.ts` | L4 | Property-based tests ([when to use](../fp-ts-and-pbt.md)) |
 | `test/schema.test.ts` / `test/boundarySchema.ts` | L4 | Checks driven by the schema artifact |
 | `schemas/order-boundary.schema.json` | L4 | Boundary JSON Schema |
-| `aat/` | L3 | Pedagogical ArchMap / LawPolicy mappings |
+| `aat/` | L3 | Pedagogical ArchMap / LawPolicy mappings, plus observation twins (`change.*`) |
 
 ## Claim boundary
 

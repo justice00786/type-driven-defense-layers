@@ -1,0 +1,42 @@
+{
+  "mappingKind": "pedagogical-change-reading",
+  "note": "NOT archmap/v0.5.4. Observation twin A: display rounding change plus the required charge follower. Comparison is preserved.",
+  "aatPin": "d481b4e9f76b107b54e6d58fc7551416821bd701",
+  "selectedAtomCandidates": [
+    {
+      "id": "atom.OrderDisplay",
+      "role": "display",
+      "owns": ["line-item rounding for the order total shown to the customer"]
+    },
+    {
+      "id": "atom.PaymentCharge",
+      "role": "outbound-port",
+      "owns": ["line-item rounding for the amount sent to the card"]
+    }
+  ],
+  "sourceChange": {
+    "atom": "atom.OrderDisplay",
+    "detail": "Display rounding policy moves from half-up to half-even on tenths of a cent."
+  },
+  "followerChange": {
+    "atom": "atom.PaymentCharge",
+    "applied": true,
+    "detail": "Charge adopts the same half-even policy."
+  },
+  "observationReading": {
+    "itemCount": 1,
+    "sampleMills": [105],
+    "displayLocallyOk": true,
+    "chargeLocallyOk": true,
+    "tests": [
+      "display-rounds-under-own-policy",
+      "charge-rounds-under-own-policy"
+    ]
+  },
+  "correspondenceReading": {
+    "status": "preserved",
+    "displayedCents": 10,
+    "chargedCents": 10,
+    "reason": "The follower change keeps displayed cents equal to charged cents."
+  }
+}

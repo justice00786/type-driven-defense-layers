@@ -26,6 +26,12 @@ Parse once is encoded in the **signature**: `publish(ticket: Ticket)` cannot tak
 - `brandTicketId("not-a-ticket")` compiles. Branding is a name stamp, not validation.
 - Branding every `string` also compiles. That is a design anti-pattern, not a type error.
 
+Boundary shaping in `toTicket` is a design choice: the inner API never sees
+`ParsedInput`. That does **not** make `toTicket` the AAT comparison factor E
+(an invisible idempotent factor on a comparison morphism). The shared lesson
+is only that a local normalize-then-brand step still belongs in the design.
+See [`papers/aat-bridge.md`](../../papers/aat-bridge.md) §8.
+
 ## Contrast with `order-pipeline`
 
 `order-pipeline` parses `unknown` straight into branded `OrderId` / `Money`.
