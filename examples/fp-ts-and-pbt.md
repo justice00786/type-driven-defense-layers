@@ -166,3 +166,4 @@ Claim boundary 末尾「Branding is not a uniqueness or idempotency proof」は�
 - L4 の別パターン（PBT なし）: [effects-at-boundary/README.md](./effects-at-boundary/README.md)
 - L4 の理論: [type-driven-defense-layers.md](../papers/type-driven-defense-layers.md) §3.4
 - 確率的実証の等級: [aat-bridge.md](../papers/aat-bridge.md) §1
+- 純な全称の証明等級（正本の主張ではない）: [bend-law-grade.md](../papers/bend-law-grade.md)
