@@ -51,6 +51,7 @@ papers/
   type-driven-defense-layers.md   4層構造の本文（正本）
   lbs-defense-in-depth-survey.md  LBS / DiD 5層対応の隣接サーベイ
   aat-bridge.md                   AAT語彙対応・主張等級・非主張・近似と限界
+  bend-law-grade.md               純な全称の証明等級（Bend 2 の Law）。第4層の置換ではない
   multi-agent-review.md           多角的レビューの方法論と検証記録
 examples/
   README.md                       デモ地図（正本 vs カタログ、throw の可否）
